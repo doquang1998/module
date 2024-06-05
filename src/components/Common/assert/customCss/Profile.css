@@ -1,0 +1,40 @@
+.my-button-phone {
+    border-radius: 12px !important;
+    border: unset !important;
+    padding-block: 6px !important;
+    background-color: #F8F8FA !important;
+}
+ 
+.my-button-phone > .selected-flag {
+    width: 40px;
+    padding-left: unset !important;
+}
+.my-button-phone > :hover {
+    background-color: #F8F8FA !important;
+}
+
+.my-button-phone-auth {
+    border-radius: 12px !important;
+    border: unset !important;
+    padding-block: 6px !important;
+    background-color: #FFF !important;
+}
+
+.my-button-phone-auth > .selected-flag {
+    width: 40px;
+    padding-left: unset !important;
+}
+.my-button-phone-auth > :hover {
+    background-color: #FFF !important;
+}
+
+.custom-text-wallet-name > input {
+    -webkit-line-clamp: 1;
+    text-align: start;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    padding-right: 10px;
+}

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Mulish');
+
+body {
+    font-family: "Mulish" !important;
+}
+
+.custom-form {
+    background: var(--neutral-backgroud, #F7F8FB);
+    box-shadow: -10px 0px 30px 0px rgba(0, 0, 0, 0.25);
+}
+.custom-form-shadow {
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border: unset !important;
+}
