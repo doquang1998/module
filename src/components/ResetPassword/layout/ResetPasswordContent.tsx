@@ -54,10 +54,10 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
         await AuthService.ResetPassword(values.password, hash);
         setIsLoading(false);
         formik.resetForm()
+        redirectLogin && redirectLogin();
+        console.log('aaa', redirectLogin.toString())
         if (typeof window !== "undefined") {
-          // window.history.replaceState({}, document.title, window.location.pathname);
-          console.log('aaa', redirectLogin.toString())
-          redirectLogin && redirectLogin();
+          window.history.replaceState({}, document.title, window.location.pathname);
         }
       } catch (err: any) {
         setIsLoading(false);

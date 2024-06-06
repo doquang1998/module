@@ -4,4 +4,4 @@ declare const _default: {
     component: ({ redirectLogin }: import("./ResetPassword").IProps) => React.JSX.Element;
 };
 export default _default;
-export declare const ResetPasswordPage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react").ReactRenderer, any>;
+export declare const ResetPasswordPage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0a347bb9").R, any>;

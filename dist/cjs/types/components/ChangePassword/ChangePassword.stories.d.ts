@@ -5,4 +5,4 @@ declare const _default: {
     component: ({ isUser, avatar, name, redirectProfile }: IProps) => React.JSX.Element;
 };
 export default _default;
-export declare const ChangePasswordPage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react").ReactRenderer, IProps>;
+export declare const ChangePasswordPage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0a347bb9").R, IProps>;
