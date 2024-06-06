@@ -17,7 +17,7 @@ import LogoAuth from "../../Common/assert/images/LogoAuth.png";
 import { MESSAGE_ALERT, VALIDATION_MESSAGE } from "../../Common/constants/auth";
 import { toast } from "react-toastify";
 import useWindowSize from "../../../hooks/useWindowSize";
-import "../../Common/assert/customCss/global.css"
+import "../../Common/assert/customCss/global.css";
 
 interface IProps {
   redirectLogin: () => void;
@@ -53,20 +53,29 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
     },
   });
 
-  const handleSubmit = async (values: { password: string; cfpassword: string }) => {
+  const handleSubmit = async (values: {
+    password: string;
+    cfpassword: string;
+  }) => {
     setIsLoading(true);
     try {
       await AuthService.ResetPassword(values.password, hash);
       setIsLoading(false);
       formik.resetForm();
       redirectLogin && redirectLogin();
-      console.log('aaa', redirectLogin.toString());
+      console.log("aaa", redirectLogin.toString());
       if (typeof window !== "undefined") {
-        window.history.replaceState({}, document.title, window.location.pathname);
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
       }
     } catch (err: any) {
       setIsLoading(false);
-      toast.error(`${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`);
+      toast.error(
+        `${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`
+      );
     }
   };
 
@@ -80,17 +89,21 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
     try {
       await AuthService.checkHashForgot(hash);
     } catch (err: any) {
-      toast.error(`${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`);
+      toast.error(
+        `${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`
+      );
     }
   };
 
   return (
     <Stack flex={1} className="custom-form">
-      <Box className={`${
+      <Box
+        className={`${
           isMobile
             ? " "
             : "relative right-[80px] rounded-tl-[60px] rounded-bl-[60px] min-w-[580px]"
-        } bg-bgCourse h-full `}>
+        } bg-bgCourse h-full `}
+      >
         <Box className={`${isMobile ? "px-[32px]" : "ml-[80px]"} my-[70px] `}>
           <Box className="flex justify-center">
             <img src={LogoAuth} alt="LogoAuth" />
@@ -98,7 +111,15 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
           <Box className="text-blackText text-loginTitle text-center font-bold mt-[32px]">
             Reset Password
           </Box>
-          <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit(e)}}>
+          <Typography onClick={redirectLogin} className="font-bold mr-[12px]">
+            Reset password
+          </Typography>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              formik.handleSubmit(e);
+            }}
+          >
             <Box className=" flex flex-col mt-[16px]">
               <FormControl className="mb-[16px]">
                 <InputPassWord
@@ -126,14 +147,19 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
                 )}
               </FormControl>
 
-              <Box className="text-loginSubTitle text-grayText">Include at least: </Box>
+              <Box className="text-loginSubTitle text-grayText">
+                Include at least:{" "}
+              </Box>
               <Box className="ml-[20px]">
-                <ul className={`list-disc marker:grayText text-grayText grid grid-cols-2 gap-x-20 
-                 ${isMobile
-                    ? "text-smallTextAuth gap-x-4"
-                    : "text-loginSubTitle gap-x-20"
-                  }
-                    `}>
+                <ul
+                  className={`list-disc marker:grayText text-grayText grid grid-cols-2 gap-x-20 
+                 ${
+                   isMobile
+                     ? "text-smallTextAuth gap-x-4"
+                     : "text-loginSubTitle gap-x-20"
+                 }
+                    `}
+                >
                   <li>1 Uppercase character</li>
                   <li>1 Special character</li>
                   <li>1 Lowercase character</li>
