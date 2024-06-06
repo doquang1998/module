@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Formik, FormikHelpers, useFormik } from "formik";
+import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { AuthService } from "../../../services/AuthService";
@@ -114,15 +114,7 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
           <Typography onClick={redirectLogin} className="font-bold mr-[12px]">
             Reset password
           </Typography>
-          <Formik
-            initialValues={{
-              password: "",
-              cfpassword: "",
-            }}
-            onSubmit={async (values) => {
-              handleSubmit(values);
-            }}
-          >
+          <form onSubmit={formik.handleSubmit}>
             <Box className=" flex flex-col mt-[16px]">
               <FormControl className="mb-[16px]">
                 <InputPassWord
@@ -190,7 +182,7 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
                 )}
               </ButtonBase>
             </Box>
-          </Formik>
+          </form>
         </Box>
       </Box>
     </Stack>
