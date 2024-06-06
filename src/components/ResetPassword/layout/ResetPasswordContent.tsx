@@ -98,7 +98,7 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
           <Box className="text-blackText text-loginTitle text-center font-bold mt-[32px]">
             Reset Password
           </Box>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit(e)}}>
             <Box className=" flex flex-col mt-[16px]">
               <FormControl className="mb-[16px]">
                 <InputPassWord
