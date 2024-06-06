@@ -49,22 +49,26 @@ const ResetPasswordContent = ({ redirectLogin }: IProps) => {
         .required("This is a required field"),
     }),
     onSubmit: async (values) => {
-      setIsLoading(true);
-      try {
-        await AuthService.ResetPassword(values.password, hash);
-        setIsLoading(false);
-        formik.resetForm()
-        redirectLogin && redirectLogin();
-        console.log('aaa', redirectLogin.toString())
-        if (typeof window !== "undefined") {
-          window.history.replaceState({}, document.title, window.location.pathname);
-        }
-      } catch (err: any) {
-        setIsLoading(false);
-        toast.error(`${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`);
-      }
+      handleSubmit(values);
     },
   });
+
+  const handleSubmit = async (values: { password: string; cfpassword: string }) => {
+    setIsLoading(true);
+    try {
+      await AuthService.ResetPassword(values.password, hash);
+      setIsLoading(false);
+      formik.resetForm();
+      redirectLogin && redirectLogin();
+      console.log('aaa', redirectLogin.toString());
+      if (typeof window !== "undefined") {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    } catch (err: any) {
+      setIsLoading(false);
+      toast.error(`${err?.response?.data?.message ?? MESSAGE_ALERT.SOMETHING_WENT_WRONG}`);
+    }
+  };
 
   useEffect(() => {
     if (hash) {
